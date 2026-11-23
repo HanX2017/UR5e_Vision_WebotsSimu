@@ -92,11 +92,9 @@ portable_support.py     控制器 Python 環境稽核
 
 更完整的模組關係請看 [系統架構](docs/ARCHITECTURE.md)。
 
-## 可攜版的定義
+## 可攜版
 
 這個 GitHub repo 是「**原始碼可攜版**」：clone 後由 `Setup_Portable.cmd` 在專案內建立 `.venv`，不污染全域 Python。Webots 本體仍需另外安裝。
-
-本機另有「內嵌 Python runtime 完整封裝版」，但壓縮檔超過 GitHub 單檔 100 MB 限制，因此沒有塞進 Git 歷史。兩種版本差異與搬移方式見 [可攜版說明](docs/PORTABLE.md)。
 
 ## 調整參數
 
@@ -112,8 +110,7 @@ portable_support.py     控制器 Python 環境稽核
 ## 已知限制與安全聲明
 
 - 僅針對 Windows x64、Python 3.11、Webots R2023b 驗證。
-- 尚未涵蓋任意旋轉、堆疊、光照變化、完整全身碰撞規劃和長時間耐久測試。
-- 固定幾何標定不等同實體相機的畸變校正與手眼標定。
+- 未涵蓋任意旋轉、堆疊、光照變化、完整全身碰撞規劃和長時間耐久測試。
 - 這是教學與報告用模擬，不是可直接部署到真實工業設備的安全控制軟體。
 
 ## 授權與第三方資源
