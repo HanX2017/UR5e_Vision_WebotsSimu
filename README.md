@@ -35,9 +35,9 @@ cd UR5e_Vision_WebotsSimu
 1. `Setup_Portable.cmd`：建立專案內 `.venv` 並安裝固定版本套件。
 2. `Start_Sorting.cmd`：啟動自動辨識、抓取與顏色分類。
 
-第一次啟動若找不到 Webots，命令視窗會要求貼上 Webots 安裝資料夾或 `webots.exe` 路徑。設定只會存在本機的 `config/webots.json`，不會提交到 Git。
+第一次啟動若找不到 Webots，命令視窗會要求貼上 Webots 安裝資料夾或 `webots.exe` 路徑。設定只會存在本機的 `config/webots.json`。
 
-### 其他入口
+### 其他
 
 | 檔案 | 用途 |
 | --- | --- |
@@ -60,21 +60,6 @@ cd UR5e_Vision_WebotsSimu
 相機實際辨識畫面：
 
 ![相機顏色辨識畫面](docs/images/camera-detection.png)
-
-## 實測摘要
-
-2026-11-15 的最終驗收共執行 5 輪、18 顆方塊：
-
-| 指標 | 結果 |
-| --- | --- |
-| 正確分類 | 18 / 18 |
-| 失敗 | 0 |
-| 平均 XY 定位誤差 | 2.214 mm |
-| 最大 XY 定位誤差 | 3.900 mm |
-| 原開發版單元／演算法／隔離測試 | 14 / 14 通過 |
-| GitHub 可攜版重建測試（2026-11-24） | 19 / 19 通過 |
-
-GitHub 可攜版另從乾淨 `.venv` 重建依賴並重跑 seed 1001，結果為 3/3 正確、`DONE`，證明本 repo 的相對路徑、本地模型與啟動器能實際串起完整流程。這些數字仍是固定模擬場景下的有限樣本，不代表所有亂數配置或實體機器手臂都能有相同成功率。完整測試條件、故障注入與限制見 [測試結果](docs/TEST_RESULTS.md)。
 
 ## 專案結構
 
