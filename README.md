@@ -98,6 +98,12 @@ portable_support.py     控制器 Python 環境稽核
 - 未涵蓋任意旋轉、堆疊、光照變化、完整全身碰撞規劃和長時間耐久測試。
 - 這是教學與報告用模擬，不是可直接部署到真實工業設備的安全控制軟體。
 
-## 授權與第三方資源
+## 授權、致謝與第三方資源
 
-專案自有程式碼目前採保留所有權利；詳見 [LICENSE](LICENSE)。UR5e、PandaHand、Webots 相關模型與 Python 套件保留各自原始授權，整理於 [第三方授權](THIRD_PARTY_NOTICES.md)。
+專案自有程式碼採 [BSD 4-Clause License](LICENSE)，允許個人、教學、研究、修改、再散布與商業用途。若在報告、論文、簡報、影片、產品、網站或其他公開材料中提及功能或使用本專案，必須顯示以下致謝：
+
+> 本作品使用 HanX2017 開發的 UR5e_Vision_WebotsSimu 專案。
+
+英文可使用：`This work uses UR5e_Vision_WebotsSimu by HanX2017.`
+
+可直接使用 GitHub 的「Cite this repository」或 [CITATION.cff](CITATION.cff) 產生引用；完整致謝文字見 [NOTICE](NOTICE)。UR5e、PandaHand、Webots 相關模型與 Python 套件仍保留各自原始授權，整理於 [第三方授權](THIRD_PARTY_NOTICES.md)。

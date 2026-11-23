@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use or reference this project, please cite it using the metadata below."
+title: "UR5e Vision Webots Simulation"
+type: software
+authors:
+  - name: "HanX2017"
+    url: "https://github.com/HanX2017"
+repository-code: "https://github.com/HanX2017/UR5e_Vision_WebotsSimu"
+url: "https://github.com/HanX2017/UR5e_Vision_WebotsSimu"
+license: BSD-4-Clause
+date-released: 2026-11-24
+keywords:
+  - Webots
+  - UR5e
+  - computer vision
+  - robotic manipulation
+  - color sorting
