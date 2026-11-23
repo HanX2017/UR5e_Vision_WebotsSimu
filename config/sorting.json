@@ -1,0 +1,62 @@
+{
+  "mode": "random",
+  "seed": 1001,
+  "object_count": 3,
+  "block_size": 0.06,
+  "table_top": 0.7,
+  "base": [
+    0,
+    0,
+    0.7
+  ],
+  "camera": [
+    -0.39,
+    0,
+    1.65
+  ],
+  "fov": 0.85,
+  "width": 640,
+  "height": 480,
+  "initial_bounds": [
+    -0.54,
+    -0.24,
+    -0.24,
+    0.24
+  ],
+  "spawn_bounds": [
+    -0.48,
+    -0.3,
+    -0.17,
+    0.17
+  ],
+  "bins": {
+    "RED": [
+      0.36,
+      -0.29
+    ],
+    "GREEN": [
+      0.48,
+      0
+    ],
+    "BLUE": [
+      0.36,
+      0.29
+    ]
+  },
+  "bin_inner": 0.24,
+  "bin_floor": 0.706,
+  "bin_wall_top": 0.806,
+  "home": [
+    0,
+    -0.38,
+    1.08
+  ],
+  "safe_z": 1.06,
+  "grasp_z": 0.735,
+  "place_z": 0.755,
+  "max_joint_speed": 0.85,
+  "motion_timeout": 15,
+  "packet_timeout": 0.3,
+  "show_window": true,
+  "trial_timeout": 240
+}

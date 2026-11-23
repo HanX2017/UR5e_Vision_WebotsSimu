@@ -1,0 +1,89 @@
+#VRML_SIM R2023b utf8
+EXTERNPROTO "../models/webots_official/projects/robots/universal_robots/protos/UR5e.proto"
+EXTERNPROTO "../models/PandaHand.proto"
+WorldInfo { basicTimeStep 16 contactProperties [ ContactProperties { material1 "grip" material2 "block" coulombFriction [ 1.4 ] softERP 0.3 softCFM 0.00001 } ] }
+Viewpoint { position 1.75 -2.2 2.45 orientation -0.23 0.11 0.967 2.27 fieldOfView 1.0 }
+Background { skyColor [ 0.36 0.4 0.46 ] }
+DirectionalLight { direction -0.4 -0.5 -1 intensity 2 ambientIntensity 0.6 }
+DirectionalLight { direction 0.5 0.3 -1 intensity 1 }
+Solid { translation 0 0 0.65 name "Worktable" children [ Shape { appearance PBRAppearance { baseColor 0.58 0.60 0.63 roughness 0.8 metalness 0 } geometry Box { size 1.65 1.1 0.1 } } ] boundingObject Box { size 1.65 1.1 0.1 } }
+Solid { translation -0.39 0 0.7005 name "INITIAL AREA plate" children [ Shape { appearance PBRAppearance { baseColor 0.3 0.32 0.35 roughness 0.8 metalness 0 } geometry Box { size 0.36 0.49 0.001 } } ]  }
+Solid { translation 0 0 0.7005 name "ROBOT AREA plate" children [ Shape { appearance PBRAppearance { baseColor 0.72 0.72 0.68 roughness 0.8 metalness 0 } geometry Box { size 0.22 0.22 0.001 } } ]  }
+Pose { translation -0.39 -0.31 0.702 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url "../models/labels/INITIAL_AREA.png" } roughness 1 metalness 0 } geometry Box { size 0.32 0.055 0.001 } } ] }
+Pose { translation 0 -0.17 0.702 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url "../models/labels/ROBOT_AREA.png" } roughness 1 metalness 0 } geometry Box { size 0.28 0.055 0.001 } } ] }
+Pose { translation 0.41 -0.47 0.702 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url "../models/labels/SORTING_AREA.png" } roughness 1 metalness 0 } geometry Box { size 0.34 0.055 0.001 } } ] }
+DEF RED_BIN Solid { translation 0.36 -0.29 0 children [
+Pose { translation 0 0 0.703 children [ Shape { appearance PBRAppearance { baseColor .7 .13 .13 roughness 1 metalness 0 } geometry Box { size 0.268 0.268 0.006 } } ] }
+Pose { translation -0.127 0 0.756 children [ Shape { appearance PBRAppearance { baseColor .7 .13 .13 roughness 1 metalness 0 } geometry Box { size 0.014 0.268 0.106 } } ] }
+Pose { translation 0.127 0 0.756 children [ Shape { appearance PBRAppearance { baseColor .7 .13 .13 roughness 1 metalness 0 } geometry Box { size 0.014 0.268 0.106 } } ] }
+Pose { translation 0 -0.127 0.756 children [ Shape { appearance PBRAppearance { baseColor .7 .13 .13 roughness 1 metalness 0 } geometry Box { size 0.24 0.014 0.106 } } ] }
+Pose { translation 0 0.127 0.756 children [ Shape { appearance PBRAppearance { baseColor .7 .13 .13 roughness 1 metalness 0 } geometry Box { size 0.24 0.014 0.106 } } ] }
+] boundingObject Group { children [
+Pose { translation 0 0 0.703 children [ Box { size 0.268 0.268 0.006 } ] }
+Pose { translation -0.127 0 0.756 children [ Box { size 0.014 0.268 0.106 } ] }
+Pose { translation 0.127 0 0.756 children [ Box { size 0.014 0.268 0.106 } ] }
+Pose { translation 0 -0.127 0.756 children [ Box { size 0.24 0.014 0.106 } ] }
+Pose { translation 0 0.127 0.756 children [ Box { size 0.24 0.014 0.106 } ] }
+] } name "RED BIN" }
+Pose { translation 0.36 -0.14999999999999997 0.702 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url "../models/labels/RED_BIN.png" } roughness 1 metalness 0 } geometry Box { size 0.18 0.055 0.001 } } ] }
+DEF GREEN_BIN Solid { translation 0.48 0 0 children [
+Pose { translation 0 0 0.703 children [ Shape { appearance PBRAppearance { baseColor .13 .6 .2 roughness 1 metalness 0 } geometry Box { size 0.268 0.268 0.006 } } ] }
+Pose { translation -0.127 0 0.756 children [ Shape { appearance PBRAppearance { baseColor .13 .6 .2 roughness 1 metalness 0 } geometry Box { size 0.014 0.268 0.106 } } ] }
+Pose { translation 0.127 0 0.756 children [ Shape { appearance PBRAppearance { baseColor .13 .6 .2 roughness 1 metalness 0 } geometry Box { size 0.014 0.268 0.106 } } ] }
+Pose { translation 0 -0.127 0.756 children [ Shape { appearance PBRAppearance { baseColor .13 .6 .2 roughness 1 metalness 0 } geometry Box { size 0.24 0.014 0.106 } } ] }
+Pose { translation 0 0.127 0.756 children [ Shape { appearance PBRAppearance { baseColor .13 .6 .2 roughness 1 metalness 0 } geometry Box { size 0.24 0.014 0.106 } } ] }
+] boundingObject Group { children [
+Pose { translation 0 0 0.703 children [ Box { size 0.268 0.268 0.006 } ] }
+Pose { translation -0.127 0 0.756 children [ Box { size 0.014 0.268 0.106 } ] }
+Pose { translation 0.127 0 0.756 children [ Box { size 0.014 0.268 0.106 } ] }
+Pose { translation 0 -0.127 0.756 children [ Box { size 0.24 0.014 0.106 } ] }
+Pose { translation 0 0.127 0.756 children [ Box { size 0.24 0.014 0.106 } ] }
+] } name "GREEN BIN" }
+Pose { translation 0.48 0.14 0.702 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url "../models/labels/GREEN_BIN.png" } roughness 1 metalness 0 } geometry Box { size 0.18 0.055 0.001 } } ] }
+DEF BLUE_BIN Solid { translation 0.36 0.29 0 children [
+Pose { translation 0 0 0.703 children [ Shape { appearance PBRAppearance { baseColor .13 .22 .7 roughness 1 metalness 0 } geometry Box { size 0.268 0.268 0.006 } } ] }
+Pose { translation -0.127 0 0.756 children [ Shape { appearance PBRAppearance { baseColor .13 .22 .7 roughness 1 metalness 0 } geometry Box { size 0.014 0.268 0.106 } } ] }
+Pose { translation 0.127 0 0.756 children [ Shape { appearance PBRAppearance { baseColor .13 .22 .7 roughness 1 metalness 0 } geometry Box { size 0.014 0.268 0.106 } } ] }
+Pose { translation 0 -0.127 0.756 children [ Shape { appearance PBRAppearance { baseColor .13 .22 .7 roughness 1 metalness 0 } geometry Box { size 0.24 0.014 0.106 } } ] }
+Pose { translation 0 0.127 0.756 children [ Shape { appearance PBRAppearance { baseColor .13 .22 .7 roughness 1 metalness 0 } geometry Box { size 0.24 0.014 0.106 } } ] }
+] boundingObject Group { children [
+Pose { translation 0 0 0.703 children [ Box { size 0.268 0.268 0.006 } ] }
+Pose { translation -0.127 0 0.756 children [ Box { size 0.014 0.268 0.106 } ] }
+Pose { translation 0.127 0 0.756 children [ Box { size 0.014 0.268 0.106 } ] }
+Pose { translation 0 -0.127 0.756 children [ Box { size 0.24 0.014 0.106 } ] }
+Pose { translation 0 0.127 0.756 children [ Box { size 0.24 0.014 0.106 } ] }
+] } name "BLUE BIN" }
+Pose { translation 0.36 0.43 0.702 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url "../models/labels/BLUE_BIN.png" } roughness 1 metalness 0 } geometry Box { size 0.18 0.055 0.001 } } ] }
+DEF ARM UR5e {
+ translation 0 0 0.7
+ name "UR5e sorting arm"
+ controller "sorting_arm"
+ toolSlot [
+  Receiver { name "vision_receiver" channel 21 }
+  Receiver { name "manager_receiver" channel 22 }
+  Emitter { name "arm_status" channel 23 }
+  Pose { rotation 1 0 0 -1.57079632679 children [
+   PandaHand { }
+   DEF GRIP_TCP Solid { translation 0 0 0.105 name "TCP validation point" }
+  ] }
+ ]
+}
+Robot {
+ translation -0.39 0 1.65
+ name "Visible fixed camera"
+ controller "sorting_vision"
+ children [
+  Camera { name "overhead_camera" rotation -0.577350269 0.577350269 0.577350269 2.094395102 width 640 height 480 fieldOfView 0.85 near 0.01 }
+  Emitter { name "vision_emitter" channel 21 }
+  Receiver { name "arm_status_receiver" channel 23 }
+  Pose { translation 0 0 0.07 children [ Shape { appearance PBRAppearance { baseColor 0.16 0.18 0.2 metalness 0.3 roughness 0.4 } geometry Box { size 0.10 0.085 0.12 } } ] }
+  Pose { translation 0 0 0.02 children [ Shape { appearance PBRAppearance { baseColor 0.015 0.02 0.035 roughness 0.15 } geometry Cylinder { radius 0.025 height 0.035 } } ] }
+ ]
+}
+Solid { translation -0.72 0.37 1.24 name "Camera support column" children [ Shape { appearance PBRAppearance { baseColor .23 .25 .28 roughness 0.8 metalness 0 } geometry Box { size 0.035 0.035 1.08 } } ] boundingObject Box { size 0.035 0.035 1.08 } }
+Solid { translation -0.55 0.37 1.8 name "Camera support crossbeam" children [ Shape { appearance PBRAppearance { baseColor .23 .25 .28 roughness 0.8 metalness 0 } geometry Box { size 0.375 0.035 0.035 } } ] boundingObject Box { size 0.375 0.035 0.035 } }
+Solid { translation -0.39 0.185 1.8 name "Camera support arm" children [ Shape { appearance PBRAppearance { baseColor .23 .25 .28 roughness 0.8 metalness 0 } geometry Box { size 0.035 0.405 0.035 } } ] boundingObject Box { size 0.035 0.405 0.035 } }
+Solid { translation -0.39 0 1.76 name "Camera mounting bracket" children [ Shape { appearance PBRAppearance { baseColor .23 .25 .28 roughness 0.8 metalness 0 } geometry Box { size 0.035 0.035 0.08 } } ] boundingObject Box { size 0.035 0.035 0.08 } }
+Pose { translation -0.54 0.39 1.823 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url "../models/labels/FIXED_CAMERA.png" } roughness 1 metalness 0 } geometry Box { size 0.28 0.055 0.001 } } ] }
+
+Robot { name "Random generation and independent verification" supervisor TRUE controller "sorting_supervisor" children [ Emitter { name "manager_emitter" channel 22 } Receiver { name "arm_receiver" channel 23 } Receiver { name "vision_observer" channel 21 } ] }

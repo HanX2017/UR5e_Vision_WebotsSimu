@@ -1,0 +1,42 @@
+#VRML_SIM R2023b utf8
+EXTERNPROTO "../models/webots_official/projects/robots/universal_robots/protos/UR5e.proto"
+WorldInfo { basicTimeStep 32 }
+Viewpoint { orientation -0.2312462679018453 0.11114270224216287 0.9665259765364705 2.2718398018196417 position 1.6 -2 2.3 fieldOfView 0.9 }
+Background { skyColor [ 0.18 0.20 0.24 ] }
+DirectionalLight { direction -0.3 -0.4 -1 intensity 1 }
+Solid {
+ translation 0 0 0.65
+ children [ Shape { appearance PBRAppearance { baseColor 0.28 0.30 0.32 roughness 1 metalness 0 } geometry Box { size 1.6 1.5 0.1 } } ]
+ name "worktable"
+ boundingObject Box { size 1.6 1.5 0.1 }
+}
+UR5e {
+ translation 0 -0.6 0.7
+ name "UR5e vision arm"
+ controller "arm_controller"
+ toolSlot [ Receiver { name "vision_receiver" channel 7 } DEF TOOL_MARKER Solid { translation 0 0 0.03 children [ Shape { appearance PBRAppearance { baseColor 1 0.7 0 metalness 0 roughness 1 } geometry Sphere { radius 0.025 } } ] } ]
+}
+Robot {
+ translation 0 0.15 1.8
+ name "Fixed overhead camera"
+ controller "vision_controller"
+ children [ Camera { rotation -0.577350269 0.577350269 0.577350269 2.094395102 name "overhead_camera" width 640 height 480 fieldOfView 1.0 near 0.02 } Emitter { name "vision_emitter" channel 7 } ]
+}
+DEF RED_BLOCK Solid {
+ translation 0 0.25 0.73
+ name "red block"
+ children [ Shape { appearance PBRAppearance { baseColor 1 0 0 roughness 1 metalness 0 } geometry Box { size 0.06 0.06 0.06 } } ]
+ boundingObject Box { size 0.06 0.06 0.06 }
+}
+DEF GREEN_BLOCK Solid {
+ translation -0.3 0.45 0.73
+ name "green block"
+ children [ Shape { appearance PBRAppearance { baseColor 0 1 0 roughness 1 metalness 0 } geometry Box { size 0.06 0.06 0.06 } } ]
+ boundingObject Box { size 0.06 0.06 0.06 }
+}
+DEF BLUE_BLOCK Solid {
+ translation 0.3 0.45 0.73
+ name "blue block"
+ children [ Shape { appearance PBRAppearance { baseColor 0 0 1 roughness 1 metalness 0 } geometry Box { size 0.06 0.06 0.06 } } ]
+ boundingObject Box { size 0.06 0.06 0.06 }
+}

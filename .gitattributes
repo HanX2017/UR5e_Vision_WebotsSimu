@@ -1,0 +1,12 @@
+* text=auto
+*.cmd text eol=crlf
+*.py text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.wbt text eol=lf
+*.proto text eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.obj text eol=lf
+*.stl binary

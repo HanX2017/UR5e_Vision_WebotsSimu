@@ -1,0 +1,121 @@
+# UR5e Vision Webots Simulation
+
+一套以 **Webots R2023b + Python + OpenCV** 製作的工業機器手臂模擬系統。UR5e 會從俯視相機影像辨識紅、綠、藍方塊，估算桌面座標，再以六軸逆運動學驅動夾爪完成抓取與顏色分類。
+
+> 口語一點說：這就是我拿來做大學「光機電工程概論」期中報告實作的專案。除了想把畫面做得好看，我也希望視覺、座標轉換、機器手臂運動和實際物理抓取都真的串得起來，所以最後整理成這個可以搬到其他 Windows 電腦重建環境的版本。
+
+![六個方塊完成顏色分類](docs/images/sorted-scene.jpg)
+
+## 專案亮點
+
+- 俯視相機的 BGRA 影像經 OpenCV 進行紅、綠、藍輪廓辨識。
+- 由像素位置反投影至桌面 XY 座標，不用 Supervisor 真值控制手臂。
+- 六軸逆運動學、關節限制、路徑插值與狀態機自動串接。
+- 使用 PandaHand 進行純接觸與摩擦抓取，沒有瞬移物件或吸附作弊。
+- 隨機生成 3～6 顆方塊，至少包含三種顏色，完成後由獨立 Supervisor 驗證。
+- UR5e、PandaHand 和必要材質均已本地化，不需在執行時下載模型。
+- 同時保留第一階段「紅色方塊視覺跟隨」展示。
+
+## 快速開始（Windows x64）
+
+先安裝：
+
+1. [Webots R2023b](https://github.com/cyberbotics/webots/releases/tag/R2023b)
+2. Python 3.11 x64（建議安裝官方 `py` launcher）
+
+接著：
+
+```powershell
+git clone https://github.com/HanX2017/UR5e_Vision_WebotsSimu.git
+cd UR5e_Vision_WebotsSimu
+```
+
+依序雙擊：
+
+1. `Setup_Portable.cmd`：建立專案內 `.venv` 並安裝固定版本套件。
+2. `Start_Sorting.cmd`：啟動自動辨識、抓取與顏色分類。
+
+第一次啟動若找不到 Webots，命令視窗會要求貼上 Webots 安裝資料夾或 `webots.exe` 路徑。設定只會存在本機的 `config/webots.json`，不會提交到 Git。
+
+### 其他入口
+
+| 檔案 | 用途 |
+| --- | --- |
+| `Start_Sorting.cmd` | 第二階段完整自動分類展示 |
+| `Start_Demo.cmd` | 第一階段紅色方塊視覺跟隨 |
+| `Configure_Webots.cmd` | 重新指定 Webots R2023b 路徑 |
+| `Run_Unit_Tests.cmd` | 執行演算法與可攜性測試 |
+| `Run_Sorting_Test.cmd` | 固定 seed 1001 的 headless 完整流程測試 |
+
+## 流程概觀
+
+```text
+隨機生成方塊
+      ↓
+俯視相機影像 → 顏色分割／輪廓 → 像素反投影 → 目標 XY
+                                                ↓
+分類完成驗證 ← 放入對應色框 ← 夾爪與六軸路徑 ← IK 求解
+```
+
+相機實際辨識畫面：
+
+![相機顏色辨識畫面](docs/images/camera-detection.png)
+
+## 實測摘要
+
+2026-11-15 的最終驗收共執行 5 輪、18 顆方塊：
+
+| 指標 | 結果 |
+| --- | --- |
+| 正確分類 | 18 / 18 |
+| 失敗 | 0 |
+| 平均 XY 定位誤差 | 2.214 mm |
+| 最大 XY 定位誤差 | 3.900 mm |
+| 原開發版單元／演算法／隔離測試 | 14 / 14 通過 |
+| GitHub 可攜版重建測試（2026-11-24） | 19 / 19 通過 |
+
+GitHub 可攜版另從乾淨 `.venv` 重建依賴並重跑 seed 1001，結果為 3/3 正確、`DONE`，證明本 repo 的相對路徑、本地模型與啟動器能實際串起完整流程。這些數字仍是固定模擬場景下的有限樣本，不代表所有亂數配置或實體機器手臂都能有相同成功率。完整測試條件、故障注入與限制見 [測試結果](docs/TEST_RESULTS.md)。
+
+## 專案結構
+
+```text
+controllers/            Webots 視覺、手臂與 Supervisor 控制器
+sorting/                通訊、視覺、場景、設定與運動學模組
+worlds/                 第一、二階段 Webots 世界檔
+models/                 本地化 UR5e、PandaHand 與相關材質
+config/                 視覺及分類參數
+tests/                  單元與可攜性測試
+docs/                   架構、測試與可攜版說明
+portable_launcher.py    環境隔離、Webots 尋找與啟動器
+portable_support.py     控制器 Python 環境稽核
+```
+
+更完整的模組關係請看 [系統架構](docs/ARCHITECTURE.md)。
+
+## 可攜版的定義
+
+這個 GitHub repo 是「**原始碼可攜版**」：clone 後由 `Setup_Portable.cmd` 在專案內建立 `.venv`，不污染全域 Python。Webots 本體仍需另外安裝。
+
+本機另有「內嵌 Python runtime 完整封裝版」，但壓縮檔超過 GitHub 單檔 100 MB 限制，因此沒有塞進 Git 歷史。兩種版本差異與搬移方式見 [可攜版說明](docs/PORTABLE.md)。
+
+## 調整參數
+
+主要設定位於 `config/sorting.json`：
+
+- `mode`：`random` 或 `fixed`
+- `seed`：重現亂數配置
+- `object_count`：3～6
+- `show_window`：是否顯示 OpenCV 視窗
+
+場景幾何、相機位置或方塊尺寸同時存在於世界檔與設定檔；若要改動，需要一起校正，不能只改 JSON。
+
+## 已知限制與安全聲明
+
+- 僅針對 Windows x64、Python 3.11、Webots R2023b 驗證。
+- 尚未涵蓋任意旋轉、堆疊、光照變化、完整全身碰撞規劃和長時間耐久測試。
+- 固定幾何標定不等同實體相機的畸變校正與手眼標定。
+- 這是教學與報告用模擬，不是可直接部署到真實工業設備的安全控制軟體。
+
+## 授權與第三方資源
+
+專案自有程式碼目前採保留所有權利；詳見 [LICENSE](LICENSE)。UR5e、PandaHand、Webots 相關模型與 Python 套件保留各自原始授權，整理於 [第三方授權](THIRD_PARTY_NOTICES.md)。

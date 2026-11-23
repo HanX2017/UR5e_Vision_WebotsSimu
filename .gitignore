@@ -1,0 +1,29 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Generated Webots controller configuration
+controllers/*/runtime.ini
+
+# Runtime output and local machine settings
+results/
+Cache/
+Temp/
+config/webots.json
+
+# Webots/editor noise
+*.wbproj
+*.wbo
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
+
+# Local archives and installers
+*.zip
+*.rar
+*.7z
+*.exe
+*.msi
