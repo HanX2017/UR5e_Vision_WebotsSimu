@@ -102,6 +102,6 @@ portable_support.py     控制器 Python 環境稽核
 
 專案自有程式碼採 [MIT License](LICENSE)，允許個人、教學、研究、修改、再散布與商業用途，只需在副本或重要部分保留原始版權與授權聲明，不需要事先取得同意。
 
-如果本專案對你的報告、研究或作品有幫助，歡迎使用 GitHub 的「Cite this repository」或 [CITATION.cff](CITATION.cff) 引用，但這不是使用本專案的額外限制。
+如果本專案對你的報告、研究或作品有幫助，歡迎使用 GitHub 的「Cite this repository」或 [CITATION.cff](CITATION.cff) 引用。
 
 UR5e、PandaHand、Webots 相關模型與 Python 套件仍保留各自原始授權，整理於 [第三方授權](THIRD_PARTY_NOTICES.md)。
